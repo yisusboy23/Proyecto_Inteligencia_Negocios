@@ -2,6 +2,9 @@
 Capa Silver: Limpieza y normalización
 """
 import pandas as pd
+import os
+
+os.makedirs("data/silver", exist_ok=True)
 
 def clean_dataframe(df):
     if df is None or df.empty:
@@ -27,6 +30,7 @@ def save_silver(df, filename):
         print(f"✅ Guardado: data/silver/{filename}.csv")
 
 if __name__ == "__main__":
-    df = pd.read_csv("data/bronze/datos_empresa.csv")
+    # Cambiar nombre de archivo
+    df = pd.read_csv("data/bronze/ventas.csv")
     df_clean = clean_dataframe(df)
-    save_silver(df_clean, "datos_empresa_clean")
+    save_silver(df_clean, "ventas_clean")
